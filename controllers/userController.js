@@ -1,5 +1,6 @@
-const {User, Parent} = require('../models/userModel');
+const {User, Parent, Child, Administrator, SuperAdministrator} = require('../models/userModel');
 const asyncHandler = require('express-async-handler');
+const {userType} = require('../utils/constants');
 
 const getUsers = asyncHandler(async(req, res) => {
     try {
@@ -26,8 +27,17 @@ const addUser = asyncHandler(async(req, res) => {
     try {
         var user ;
         switch(req.body.type) {
-            case "Parent":
+            case userType.Parent:
                 user = await Parent.create(req.body) ;
+              break;
+            case userType.Child:
+                user = await Child.create(req.body) ;
+              break;
+            case userType.Administrator:
+                user = await Administrator.create(req.body) ;
+              break;
+            case userType.SuperAdministrator:
+                user = await SuperAdministrator.create(req.body) ;
               break;
             default:
                 user = await User.create(req.body) ;
@@ -44,8 +54,17 @@ const updateUser = asyncHandler(async(req, res) => {
         const {id} = req.params;
         var user = await User.findById(id);
         switch(user.__t) {
-            case "Parent":
+            case userType.Parent:
                 user = await Parent.findByIdAndUpdate(id, req.body);
+              break;
+              case userType.Child:
+                user = await Child.findByIdAndUpdate(id, req.body);
+              break;
+            case userType.Administrator:
+                user = await Administrator.findByIdAndUpdate(id, req.body);
+              break;
+            case userType.SuperAdministrator:
+                user = await SuperAdministrator.findByIdAndUpdate(id, req.body);
               break;
             default:
                 user = await User.findByIdAndUpdate(id, req.body);
