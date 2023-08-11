@@ -24,18 +24,15 @@ const getUser = asyncHandler(async(req, res) => {
 
 const addUser = asyncHandler(async(req, res) => {
     try {
-        const user = await User.create(req.body) ;
+        var user ;
+        switch(req.body.type) {
+            case "Parent":
+                user = await Parent.create(req.body) ;
+              break;
+            default:
+                user = await User.create(req.body) ;
+          }
         res.status(200).json(user);
-    } catch (error) {
-        res.status(500);
-        throw new Error(error.message);
-    }
-})
-
-const addParent = asyncHandler(async(req, res) => {
-    try {
-        const parent = await Parent.create(req.body) ;
-        res.status(200).json(parent);
     } catch (error) {
         res.status(500);
         throw new Error(error.message);
@@ -45,7 +42,14 @@ const addParent = asyncHandler(async(req, res) => {
 const updateUser = asyncHandler(async(req, res) => {
     try {
         const {id} = req.params;
-        const user = await User.findByIdAndUpdate(id, req.body);
+        var user = await User.findById(id);
+        switch(user.__t) {
+            case "Parent":
+                user = await Parent.findByIdAndUpdate(id, req.body);
+              break;
+            default:
+                user = await User.findByIdAndUpdate(id, req.body);
+          }
         if(!user){
             res.status(404);
             throw new Error(`User with id ${id} Not found!`);
@@ -78,7 +82,6 @@ module.exports = {
     getUsers,
     getUser,
     addUser,
-    addParent,
     updateUser,
     deleteUser,
 }
