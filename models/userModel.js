@@ -33,6 +33,13 @@ const parentSchema = mongoose.Schema(
                 "Please provide a valid email",
               ],
         },
+        password: {
+            type: String,
+            required: true,
+            minlength: 8,
+        },
+        resetPasswordToken: String,
+        resetPasswordExpire: Date,
         pinCode: {
             type: String,
             required: true,
