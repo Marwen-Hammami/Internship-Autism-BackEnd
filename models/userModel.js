@@ -8,12 +8,12 @@ const userSchema = mongoose.Schema(
         firstName: {
             type: String,
             required: true,
-            //match: [/^[\u0621-\u064A\s]+$/, "Please provide a valid Arabic first name"],
+            match: [/^[\u0621-\u064A\s]+$/, "Please provide a valid Arabic first name"],
         },
         lastName: {
             type: String,
             required: true,
-            //match: [/^[\u0621-\u064A\s]+$/, "Please provide a valid Arabic last name"],
+            match: [/^[\u0621-\u064A\s]+$/, "Please provide a valid Arabic last name"],
         }
     },
     {
@@ -38,8 +38,8 @@ const parentSchema = mongoose.Schema(
             required: true,
             minlength: 8,
         },
-        resetPasswordToken: String,
-        resetPasswordExpire: Date,
+        updatePasswordToken: String,
+        updatePasswordExpire: Date,
         pinCode: {
             type: String,
             required: true,
@@ -54,7 +54,13 @@ const parentSchema = mongoose.Schema(
         avatar: {
             type: String, //can add Profile Picture later with Buffer type or long string in B64
             required: true,
-        }
+        },
+        childsList: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: userType.Child
+            }
+        ]
     },
     {
         timestamps: true,
@@ -68,13 +74,13 @@ const childSchema = mongoose.Schema(
             type: Date, //'2000-07-21'
             required: true,
         },
-        avatar: {
-            type: String, //can add Profile Picture later with Buffer type or long string in B64
-            required: true,
-        },
         sex: {
             type: String,
             enum: ['male', 'female'],
+            required: true,
+        },
+        avatar: {
+            type: String, //can add Profile Picture later with Buffer type or long string in B64
             required: true,
         }
     },
