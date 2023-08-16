@@ -26,6 +26,8 @@ app.use('/api/cards', require('./routes/cardRoute'));
 
 app.use('/api/lessons', require('./routes/lessonRoute'));
 
+app.use('/api/subjects', require('./routes/subjectRoute'));
+
 app.use(errorMiddleware);
 
 

@@ -8,7 +8,7 @@ const cardSchema = mongoose.Schema(
         title: {
             type: String,
             required: true,
-            match: [/^[\u0621-\u064A\s]+$/, "Please provide a valid Arabic title"],
+            match: [/^[0-9\u0660-\u0669\u06F0-\u06F9\u0621-\u064A\s]+$/, "Please provide a valid Arabic name"], //arabic and numbers
         },
         message: {
             type: String,
