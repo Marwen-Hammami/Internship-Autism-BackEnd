@@ -14,7 +14,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 //pour utiliser les fichiers json
 app.use(express.json());
-
 // increase maximum string size to 10mb for files (illustrations) converted to string in Base64
 // node_modules -> body-parser -> lib -> types :
 //   ? bytes.parse( '10mb')
@@ -24,6 +23,8 @@ app.use(express.json());
 app.use('/api/users', require('./routes/userRoute'));
 
 app.use('/api/cards', require('./routes/cardRoute'));
+
+app.use('/api/lessons', require('./routes/lessonRoute'));
 
 app.use(errorMiddleware);
 

@@ -9,7 +9,7 @@ const saltRounds = 10;
 
 const getUsers = asyncHandler(async(req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find().populate('childsList');
         res.status(200).json(users);
     } catch (error) {
         res.status(500);
