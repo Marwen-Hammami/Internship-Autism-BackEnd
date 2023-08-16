@@ -28,6 +28,8 @@ app.use('/api/lessons', require('./routes/lessonRoute'));
 
 app.use('/api/subjects', require('./routes/subjectRoute'));
 
+app.use('/api/progressions', require('./routes/progressionRoute'));
+
 app.use(errorMiddleware);
 
 
