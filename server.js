@@ -11,14 +11,19 @@ const corsOptions = {
     origin: process.env.FRONT_END,
     optionsSuccessStatus: 200
 }
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 //pour utiliser les fichiers json
 app.use(express.json());
-//utiliser form URL à la place de json
-app.use(express.urlencoded({extended: false}));
+
+// increase maximum string size to 10mb for files (illustrations) converted to string in Base64
+// node_modules -> body-parser -> lib -> types :
+//   ? bytes.parse( '10mb')
+
 
 //routes
 app.use('/api/users', require('./routes/userRoute'));
+
+app.use('/api/cards', require('./routes/cardRoute'));
 
 app.use(errorMiddleware);
 

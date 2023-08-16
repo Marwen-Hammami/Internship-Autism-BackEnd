@@ -15,7 +15,7 @@ const getUsers = asyncHandler(async(req, res) => {
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const getUser = asyncHandler(async(req, res) => {
     try {
@@ -26,7 +26,7 @@ const getUser = asyncHandler(async(req, res) => {
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const addUser = asyncHandler(async(req, res) => {
     try {
@@ -69,7 +69,7 @@ const addUser = asyncHandler(async(req, res) => {
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const updateUser = asyncHandler(async(req, res) => {
     try {
@@ -101,7 +101,7 @@ const updateUser = asyncHandler(async(req, res) => {
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const deleteUser = asyncHandler(async(req, res) =>{
     try {
@@ -117,7 +117,7 @@ const deleteUser = asyncHandler(async(req, res) =>{
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const login = asyncHandler(async(req, res) =>{
     try {
@@ -131,7 +131,7 @@ const login = asyncHandler(async(req, res) =>{
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 const updatePassword = asyncHandler(async(req, res) =>{
     try {
@@ -163,7 +163,7 @@ const updatePassword = asyncHandler(async(req, res) =>{
         res.status(500);
         throw new Error(error.message);
     }
-})
+});
 
 module.exports = {
     getUsers,
@@ -173,4 +173,4 @@ module.exports = {
     deleteUser,
     login,
     updatePassword,
-}
+};

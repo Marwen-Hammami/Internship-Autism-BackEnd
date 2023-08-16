@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const {userType} = require('../utils/constants');
 
 //Polimorphic Users with discriminator
@@ -66,7 +66,7 @@ const parentSchema = mongoose.Schema(
         timestamps: true,
     }
 );
-const Parent = User.discriminator(userType.Parent, parentSchema)
+const Parent = User.discriminator(userType.Parent, parentSchema);
 
 const childSchema = mongoose.Schema(
     {
@@ -82,6 +82,10 @@ const childSchema = mongoose.Schema(
         avatar: {
             type: String, //can add Profile Picture later with Buffer type or long string in B64
             required: true,
+        },
+        progression: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Progression"
         }
     },
     {
@@ -110,8 +114,8 @@ const administratorSchema = mongoose.Schema(
     {
         timestamps: true,
     }
-)
-const Administrator = User.discriminator(userType.Administrator, administratorSchema)
+);
+const Administrator = User.discriminator(userType.Administrator, administratorSchema);
 
 const superAdministratorSchema = mongoose.Schema(
     {
@@ -133,7 +137,7 @@ const superAdministratorSchema = mongoose.Schema(
     {
         timestamps: true,
     }
-)
+);
 const SuperAdministrator = User.discriminator(userType.SuperAdministrator, superAdministratorSchema);
 
-module.exports = {User, Parent, Child, Administrator, SuperAdministrator}
+module.exports = {User, Parent, Child, Administrator, SuperAdministrator};
