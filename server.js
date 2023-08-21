@@ -8,7 +8,7 @@ const cors = require('cors');
 
 //allow cross origin (frontend)
 const corsOptions = {
-    origin: process.env.FRONT_END,
+    origin: "*", //process.env.FRONT_END,
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
