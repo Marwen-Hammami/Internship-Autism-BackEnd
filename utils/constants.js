@@ -2,8 +2,8 @@ module.exports = {
     userType: {
       Parent: "Parent",
       Child: "Child",
-      Administrator: "UNITE",
-      SuperAdministrator: "INVITE",
+      Administrator: "Administrator",
+      SuperAdministrator: "SuperAdministrator",
     },
     cardType: {
       Lecture: "Lecture",
